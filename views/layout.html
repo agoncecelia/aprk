@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Agjencia e Punësimit e Republikës së Kosovës</title>
+    <script src="/js/lib/jquery.js"></script>
+    <script>
+        $(window).ready(function () {
+            $(".se-pre-con").delay(700).fadeOut('slow');
+        });
+    </script>
+</head>
+
+<body>
+    {% include "partials/header.html" %} 
+    <div class="se-pre-con"></div>
+    {% block body %}{% endblock %} 
+    {% include "partials/footer.html" %}
+    <script src="/js/lib/sweetalert2.all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <script src="/js/lib/bootstrap.js"></script>
+    <!-- <script src="/js/main.js"></script> -->
+</body>
+
+</html>

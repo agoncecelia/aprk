@@ -1,0 +1,111 @@
+<div class="container-fluid">
+        <legend>Profili im</legend>
+        <form id="updateProfileForm" class="form-horizontal needs-validation" novalidate>
+            <div class="form-group row">
+                <label for="email" class="col-md-2">Email</label>
+                <div class="col-md-6">
+                    <input disabled type="email" id="email" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="firstName" class="col-md-2">Emri</label>
+                <div class="col-md-6">
+                    <input type="text" name="firstName" id="firstName" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Emri nuk mund të jetë i zbrazët
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lastName" class="col-md-2">Mbiemri</label>
+                <div class="col-md-6">
+                    <input type="text" name="lastName" id="lastName" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Mbiemri nuk mund të jetë i zbrazët
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2">Gjinia</label>
+                <div class="col-sm-4 row">
+                    <label class="radio-inline radio col-sm-4">
+                        <input name="gender" id="male" type="radio" value="m">
+                        <span>M</span>
+                    </label>
+                    <label class="radio-inline col-sm-4">
+                        <input name="gender" id="female" type="radio" value="f">
+                        <span>F</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="municipality" class="col-md-2">Komuna</label>
+                <div class="col-md-6">
+                    <input disabled type="text" id="municipality" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="department" class="col-md-2">Departamenti</label>
+                <div class="col-md-6">
+                    <input disabled type="text" id="department" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="division" class="col-md-2">Divizioni</label>
+                <div class="col-md-6">
+                    <input disabled type="text" id="division" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="role" class="col-md-2">Roli</label>
+                <div class="col-md-6">
+                    <input disabled type="text" id="role" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="offset-md-2 col-md-6">
+                    <button id="updateProfile" type="submit" class="btn btn-primary">Ruaj ndryshimet</button>
+                </div>
+            </div>
+        </form>
+        <form id="updatePassword" class="form-horizontal needs-validation" novalidate>
+            <legend class="changePassword">Ndrysho fjalëkalimin
+                <i id="forgotPasswordArrow" class="fa fw fa-arrow-down"></i>
+            </legend>
+            <div id="passwordPanel">
+                <div class="form-group row">
+                    <label for="oldPassword" class="col-md-2">Fjalëkalimi i vjetër</label>
+                    <div class="col-md-6">
+                        <input type="password" id="oldPassword" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Fjalëkalimi i vjetër nuk mund të jetë i zbrazët
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password row" class="col-md-2">Fjalëkalimi i ri</label>
+                    <div class="col-md-6">
+                        <input type="password" id="newPassword" class="form-control" required minlength="6">
+                        <div class="invalid-feedback">
+                            Fjalëkalimi i ri duhet të ketë së paku 6 karaktere.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="confirm" class="col-md-2">Konfirmo fjalëkalimin</label>
+                    <div class="col-md-6">
+                        <input type="password" id="confirm" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Konfirmimi i fjalëkalimit nuk mund të jetë i zbrazët
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-md-2 col-md-6">
+                      <button id="changePassword" class="btn btn-primary">Ndrysho fjalëkalimin</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+<script src="/js/profile.js"></script>

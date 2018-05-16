@@ -1,0 +1,924 @@
+<div>
+    <legend>
+        <div class="row">
+            <div class="col-sm-6 col-xs-6">
+                Lista e dokumenteve
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <button type="button" data-toggle="modal" data-target="#createDocumentModal" id="addDocument" style="float: right" class="btn btn-primary">Shto nje dokument</button>
+            </div>
+        </div>
+    </legend>
+
+    <div class="modal fade" id="createDocumentModal" tabindex="-1" role="dialog" aria-labelledby="Shto një dokument" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Shto një dokument</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/document" enctype="multipart/form-data" id="createDocumentForm" novalidate>
+                        <div class="form-group">
+                            <label for="documentNumber">Numri i lëndës</label>
+                            <input type="text" name="documentNumber" id="documentNumber" placeholder="Numri i lëndës" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Numri i lëndës nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentTitle">Lënda</label>
+                            <input type="text" name="documentTitle" id="documentTitle" placeholder="Lënda" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lënda nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Komuna</label>
+                            <select id="municipalityDoc" name="municipality" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni komunën</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Zgjedhni komunën
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="origin">Prejardhja</label>
+                            <input type="text" name="origin" id="origin" placeholder="Prejardhja" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Prejardhja nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressed">Adresuar</label>
+                            <input type="text" name="addressed" id="addressed" placeholder="Adresuar" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Adresuar nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentDate">Data e dokumentit</label>
+                            <input type="date" name="documentDate" id="documentDate" placeholder="Data e dokumentit" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Data e dokumentit nuk mund nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfDocumentArrival">Data e ardhjes së dokumentit</label>
+                            <input type="date" name="dateOfDocumentArrival" id="dateOfDocumentArrival" placeholder="Data e arritjes se dokumentit" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Data e ardhjes së dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="through">Përmes</label>
+                            <input type="text" name="through" id="through" placeholder="Permes" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Përmes nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver">Marrësi</label>
+                            <input type="text" name="receiver" id="receiver" placeholder="Marresi" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Marrësi nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfTheDocumentIssued">Data e daljes të dokumentit</label>
+                            <input type="date" name="dateOfDocumentIssued" id="dateOfTheDocumentIssued" placeholder="Data e leshimit te dokumentit" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Data e daljes të dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="physicalLocation">Lokacioni fizik</label>
+                            <input type="text" name="physicalLocation" id="physicalLocation" placeholder="Lokacioni fizik" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lokacioni fizik nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Departamenti</label>
+                            <select id="departmentDoc" name="department" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni departamentin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Departamenti nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div id="divisionSelectionDoc" class="form-group">
+                            <label for="division">Divizioni</label>
+                            <select id="divisionDoc" name="division" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni divizionin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Divizioni nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Vërejtje</label>
+                            <textarea type="text" name="comment" id="comment" placeholder="Vërejtje" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Dokumenti i skenuar</label>
+                            <input type="file" accept="application/pdf" name="file" id="file" placeholder="Dokumenti" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Zgjedheni dokumentin e skenuar
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+                            <button id="createDocument" class="btn btn-primary">Ruaj dokumentin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addAnswerModal" tabindex="-1" role="dialog" aria-labelledby="Shto një përgjigje" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Shto një përgjigje</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <form id="addAnswerForm" novalidate>
+                        <div class="form-group">
+                            <label for="answerTitle">Lënda</label>
+                            <input type="text" name="answerTitle" id="answerTitle" placeholder="Lënda" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lënda nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Komuna</label>
+                            <select id="municipalityAns" name="municipality" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni komunën</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Zgjedhni komunën
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="origin">Prejardhja</label>
+                            <input type="text" name="origin" id="originAns" placeholder="Prejardhja" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Prejardhja nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressed">Adresuar</label>
+                            <input type="text" name="addressed" id="addressedAns" placeholder="Adresuar" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Adresuar nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="answerDate">Data e dokumentit</label>
+                            <input type="date" name="answerDate" id="documentDateAns" placeholder="Data e dokumentit" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Data e dokumentit nuk nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfDocumentArrival">Data e ardhjes së dokumentit</label>
+                            <input type="date" name="dateOfAnswerArrival" id="dateOfDocumentArrivalAns" placeholder="Data e arritjes se dokumentit" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Data e ardhjes së dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="through">Përmes</label>
+                            <input type="text" name="through" id="throughAns" placeholder="Permes" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Përmes nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver">Marrësi</label>
+                            <input type="text" name="receiver" id="receiverAns" placeholder="Marresi" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Marrësi nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfTheAnswerIssued">Data e daljes të dokumentit</label>
+                            <input type="date" name="dateOfAnswerIssued" id="dateOfTheAnswerIssued" placeholder="Data e leshimit te dokumentit" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Data e daljes të dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="physicalLocation">Lokacioni fizik</label>
+                            <input type="text" name="physicalLocation" id="physicalLocationAns" placeholder="Lokacioni fizik" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lokacioni fizik nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Departamenti</label>
+                            <select id="departmentAns" name="department" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni departamentin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Departamenti nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div id="divisionSelectionAns" class="form-group">
+                            <label for="division">Divizioni</label>
+                            <select id="divisionAns" name="division" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni divizionin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Divizioni nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Vërejtje</label>
+                            <textarea type="text" name="comment" id="commentAns" placeholder="Vërejtje" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="answerFile">Dokumenti i skenuar</label>
+                            <input type="file" accept="application/pdf" name="file" id="ansFile" placeholder="Dokumenti" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Zgjedheni dokumentin e skenuar
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+                            <button type="button" id="submitAnswer" class="btn btn-primary">Ruaj përgjigjen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updateDocumentModal" tabindex="-1" role="dialog" aria-labelledby="Ndrysho dokumentin" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ndrysho dokumentin</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <form id="updateDocumentForm" novalidate>
+                        <div class="form-group">
+                            <label for="documentNumber">Numri i lëndës</label>
+                            <input type="text" name="documentNumber" id="UdocumentNumber" placeholder="Numri i lëndës" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentTitle">Lënda</label>
+                            <input type="text" name="documentTitle" id="UdocumentTitle" placeholder="Lënda" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lënda nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Komuna</label>
+                            <input id="UmunicipalityDoc" name="municipality" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="origin">Prejardhja</label>
+                            <input type="text" id="Uorigin" name="origin" placeholder="Prejardhja" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Prejardhja nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressed">Adresuar</label>
+                            <input type="text" id="Uaddressed" name="addressed" placeholder="Adresuar" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Adresuar nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentDate">Data e dokumentit</label>
+                            <input type="date" id="UdocumentDate" name="documentDate" placeholder="Data e dokumentit" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Data e dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfDocumentArrival">Data e ardhjes së dokumentit</label>
+                            <input type="date" id="UdateOfDocumentArrival" placeholder="Data e arritjes se dokumentit" name="dateOfDocumentArrival" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Data e ardhjes së dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="through">Përmes</label>
+                            <input type="text" id="Uthrough" name="through" placeholder="Permes" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Përmes nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver">Marrësi</label>
+                            <input type="text" id="Ureceiver" name="receiver" placeholder="Marresi" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Marrësi nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfTheDocumentIssued">Data e daljes të dokumentit</label>
+                            <input type="date" name="dateOfDocumentIssued" id="UdateOfTheDocumentIssued" placeholder="Data e leshimit te dokumentit"
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Data e daljes të dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="physicalLocation">Lokacioni fizik</label>
+                            <input type="text" name="physicalLocation" id="UphysicalLocation" placeholder="Lokacioni fizik" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lokacioni fizik nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Departamenti</label>
+                            <select id="UdepartmentDoc" name="department" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni departamentin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Departamenti nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="division">Divizioni</label>
+                            <select id="UdivisionDoc" name="division" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni divizionin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Divizioni nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Vërejtje</label>
+                            <textarea type="text" name="comment" id="Ucomment" placeholder="Vërejtje" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Dokumenti i skenuar</label>
+                            <br>
+                            <a href="" id="Udownload">
+                                <i class="fa fa-download"></i>
+                                <span id="UfileNameSpan"></span>
+                            </a>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+                            <button id="updateDocument" class="btn btn-primary">Ndrysho dokumentin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updateAnswerModal" tabindex="-1" role="dialog" aria-labelledby="Ndrysho përgjigjen" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ndrysho përgjigjen</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <form id="updateAnswerForm" novalidate>
+                        <div class="form-group">
+                            <label for="documentNumber">Numri i lëndës</label>
+                            <input type="text" name="documentNumber" id="UAdocumentNumber" placeholder="Numri i lëndës" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentTitle">Lënda</label>
+                            <input type="text" name="documentTitle" id="UAdocumentTitle" placeholder="Lënda" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lënda nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Komuna</label>
+                            <input id="UAmunicipalityDoc" name="municipality" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="origin">Prejardhja</label>
+                            <input type="text" id="UAorigin" name="origin" placeholder="Prejardhja" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Prejardhja nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressed">Adresuar</label>
+                            <input type="text" id="UAaddressed" name="addressed" placeholder="Adresuar" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Adresuar nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentDate">Data e dokumentit</label>
+                            <input type="date" id="UAdocumentDate" name="documentDate" placeholder="Data e dokumentit" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Data e dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfDocumentArrival">Data e ardhjes së dokumentit</label>
+                            <input type="date" id="UAdateOfDocumentArrival" placeholder="Data e arritjes se dokumentit" name="dateOfDocumentArrival" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Data e ardhjes së dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="through">Përmes</label>
+                            <input type="text" id="UAthrough" name="through" placeholder="Permes" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Përmes nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver">Marrësi</label>
+                            <input type="text" id="UAreceiver" name="receiver" placeholder="Marresi" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Marrësi nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfTheDocumentIssued">Data e daljes të dokumentit</label>
+                            <input type="date" name="dateOfDocumentIssued" id="UAdateOfTheDocumentIssued" placeholder="Data e leshimit te dokumentit"
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Data e daljes të dokumentit nuk është valide
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="physicalLocation">Lokacioni fizik</label>
+                            <input type="text" name="physicalLocation" id="UAphysicalLocation" placeholder="Lokacioni fizik" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Lokacioni fizik nuk mund të jetë e zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Departamenti</label>
+                            <select id="UAdepartmentDoc" name="department" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni departamentin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Departamenti nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="division">Divizioni</label>
+                            <select id="UAdivisionDoc" name="division" class="form-control" required>
+                                <option value="" selected="selected">Zgjedhni divizionin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Divizioni nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Vërejtje</label>
+                            <textarea type="text" name="comment" id="UAcomment" placeholder="Vërejtje" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Dokumenti i skenuar</label>
+                            <br>
+                            <a href="" id="UAdownload">
+                                <i class="fa fa-download"></i>
+                                <span id="UAfileNameSpan"></span>
+                            </a>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+                            <button id="AupdateAnswer" class="btn btn-primary">Ndrysho dokumentin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="viewDocumentModal" tabindex="-1" role="dialog" aria-labelledby="Shiko Dokumentin" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="viewDocument">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="VdocumentTitle"></h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="VdocumentNumber">Numri i lëndës</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="VdocumentNumber"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vmunicipality">Komuna</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vmunicipality"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vorigin">Prejardhja</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vorigin"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vaddressed">Adresuar</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vaddressed"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="VdocumentDate">Data e dokumentit</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="VdocumentDate"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="VdateOfDocumentArrival">Data e ardhjes së dokumentit</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="VdateOfDocumentArrival"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vthrough">Përmes</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vthrough"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vreceiver">Marrësi</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vreceiver"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="VdateOfDocumentIssued">Data e daljes të dokumentit</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="VdateOfDocumentIssued"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="VphysicalLocation">Lokacioni fizik</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="VphysicalLocation"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vdepartment">Departamenti</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vdepartment"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vdivision">Divizioni</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vdivision"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vuser">Dokumenti është ruajtur nga:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Vuser"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="editingUserDiv"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Vcomment">Vërejtje</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="Vcomment"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="file">Dokumenti i skenuar</label>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="" id="Vdownload">
+                                    <i class="fa fa-download"></i>
+                                    <span id="fileNameSpan"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="viewAnswersModal" tabindex="-1" role="dialog" aria-labelledby="Shiko Përgjigjen" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="viewAnswer">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AanswerTitle"></h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="AanswerNumber">Numri i lëndës</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="AanswerNumber"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Amunicipality">Komuna</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Amunicipality"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Aorigin">Prejardhja</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Aorigin"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Aaddressed">Adresuar</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Aaddressed"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="AanswerDate">Data e dokumentit</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="AdocumentDate"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="AdateOfAnswerArrival">Data e ardhjes së dokumentit</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="AdateOfAnswerArrival"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Athrough">Përmes</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Athrough"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Areceiver">Marrësi</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Areceiver"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="AdateOfAnswerIssued">Data e daljes të dokumentit</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="AdateOfAnswerIssued"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="AphysicalLocation">Lokacioni fizik</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="AphysicalLocation"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Adepartment">Departamenti</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Adepartment"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Adivision">Divizioni</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Adivision"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Auser">Dokumenti është ruajtur nga:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Auser"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="AeditingUserDiv"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Acomment">Vërejtje</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="Acomment"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="file">Dokumenti i skenuar</label>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="" id="Adownload">
+                                    <i class="fa fa-download"></i>
+                                    <span id="AfileNameSpan"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="similarDocumentsModal" tabindex="-1" role="dialog" aria-labelledby="Dokumentet e ngjajshme" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="similarDocumentsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dokumentet e ngjajshme</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+                    <button id="saveDocument" class="btn btn-primary">Vazhdo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div>
+        <table id="documentsTable" class="table table-striped table-bordered responsive nowrap" width="100%">
+            <thead>
+                <tr>
+                    <th data-priority="2">
+                        Numri i lëndës
+                    </th>
+                    <th data-priority="2">
+                        Lënda
+                    </th>
+                    <th data-priority="5">
+                        Komuna
+                    </th>
+                    <th data-priority="5">
+                        Prejardhja
+                    </th>
+                    <th data-priority="5">
+                        Adresuar
+                    </th>
+                    <th data-priority="100">
+                        Lokacioni fizik
+                    </th>
+                    <th data-priority="5">
+                        Përmes
+                    </th>
+                    <th data-priority="5">
+                        Marrësi
+                    </th>
+                    <th data-priority="100">
+                        Data e dokumentit
+                    </th>
+                    <th data-priority="5">
+                        Data e ruajtjes
+                    </th>
+                    <th data-priority="100">
+                        Departamenti
+                    </th>
+                    <th data-priority="100">
+                        Divizioni
+                    </th>
+                    <th data-priority="100">
+                        Vërejtje
+                    </th>
+                    <th data-priority="1">
+                        Veprimet
+                    </th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>
+                        Numri i lëndës
+                    </th>
+                    <th>
+                        Lënda
+                    </th>
+                    <th>
+                        Komuna
+                    </th>
+                    <th>
+                        Prejardhja
+                    </th>
+                    <th>
+                        Adresuar
+                    </th>
+                    <th>
+                        Lokacioni fizik
+                    </th>
+                    <th>
+                        Përmes
+                    </th>
+                    <th>
+                        Marrësi
+                    </th>
+                    <th>
+                        Data e dokumentit
+                    </th>
+                    <th>
+                        Data e ruajtjes
+                    </th>
+                    <th>
+                        Departamenti
+                    </th>
+                    <th>
+                        Divizioni
+                    </th>
+                    <th>
+                        Vërejtje
+                    </th>
+                    <th>
+                        Veprimet
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script src="/js/document.js"></script>

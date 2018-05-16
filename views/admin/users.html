@@ -1,0 +1,417 @@
+<div>
+    <legend>Lista e përdoruesve
+        <button id="addUser" type="button" data-toggle="modal" data-target="#createUserModal" style="float: right" class="btn btn-primary">Shto një përdorues</button>
+    </legend>
+    <div class="table-responsive">
+        <table id="usersTable" class="table table-striped table-bordered responsive nowrap" width="100%">
+            <thead>
+                <tr>
+                    <th data-priority="2">
+                        Emri
+                    </th>
+                    <th data-priority="2">
+                        Mbiemri
+                    </th>
+                    <th data-priority="2">
+                        Email
+                    </th>
+                    <th data-priority="20">
+                        Komuna
+                    </th>
+                    <th data-priority="5">
+                        Departmenti
+                    </th>
+                    <th data-priority="5">
+                        Divizioni
+                    </th>
+                    <th data-priority="20">
+                        Gjinia
+                    </th>
+                    <th data-priority="2">
+                        Roli
+                    </th>
+                    <th data-priority="20">Statusi</th>
+                    <th>Veprimet</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>
+                        Emri
+                    </th>
+                    <th>
+                        Mbiemri
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Komuna
+                    </th>
+                    <th>
+                        Departmenti
+                    </th>
+                    <th>
+                        Divizioni
+                    </th>
+                    <th>
+                        Gjinia
+                    </th>
+                    <th>
+                        Roli
+                    </th>
+                    <th>Statusi</th>
+                    <th>Veprimet</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="Shto një përdorues" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="user">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Shto një përdorues</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <form id="createUserForm" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="firstNameSignup">Emri</label>
+                            <input type="text" id="firstNameSignup" placeholder="Emri" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Emri nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastNameSignup">Mbiemri</label>
+                            <input type="text" id="lastNameSignup" placeholder="Mbiemri" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Mbiemri nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Emri i përdoruesit</label>
+                            <input type="text" id="username" placeholder="Emri i përdoruesit" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Emri i përdoruesit nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="emailSignup" placeholder="Email" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Emaili duhet të jetë valid
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Fjalëkalimi</label>
+                            <input type="password" id="passwordSignup" placeholder="Fjalëkalimi" class="form-control" required minlength="6">
+                            <div class="invalid-feedback">
+                                Fjalëkalimi nuk mund të ketë më pakë se 6 karaktere
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Komuna</label>
+                            <select id="municipalitySignup" class="form-control" required>
+                                <option selected value="">Zgjedhni komunën</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Ju lutemi zgjedhni komunën
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departments">Departamenti</label>
+                            <select id="departmentSignup" name="department" class="form-control" required>
+                                <option value="" selected>Zgjedhni departamentin</option>
+
+                            </select>
+                            <div class="invalid-feedback">
+                                Ju lutemi gjedhni departamentin
+                            </div>
+                        </div>
+
+                        <div id="divisionSelection" class="form-group">
+                            <label for="divisions">Divizioni</label>
+                            <select id="divisionSignup" class="form-control" required>
+                            </select>
+                            <div class="invalid-feedback">
+                                Ju lutemi zgjedhni divizionin
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiring">Data e mbarimit të kontratës</label>
+                            <input type="date" id="expiring" placeholder="Data e mbarimit të kontratës" name="expiring" class="form-control">
+                        </div>
+                        <div id="gender" class="form-group" required>
+                            <label for="gender">Gjinia</label>
+                            <br>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="m" value="m" name="gender" class="custom-control-input" required>
+                                <label class="custom-control-label" for="m">Mashkull</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="f" value="f" name="gender" class="custom-control-input" required>
+                                <label class="custom-control-label" for="f">Femer</label>
+                                <br>
+                            </div>
+                        </div>
+                        <div id="roles" class="form-group">
+                            <label for="roles">Roli</label>
+                            <br />
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="superadmin" value="superadmin" name="role" class="custom-control-input" required>
+                                <label class="custom-control-label" for="superadmin">Super Administrator</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="admin" value="admin" name="role" class="custom-control-input" required>
+                                <label class="custom-control-label" for="admin">Administrator</label>
+                                <br>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="user" value="user" name="role" class="custom-control-input" checked required>
+                                <label class="custom-control-label" for="user">Përdorues</label>
+                                <br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+                    <button id="createUser" type="button" class="btn btn-primary">Krijo përdoruesin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewUserModal" tabindex="-1" role="dialog" aria-labelledby="Shiko Përdoruesin" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="viewUser">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Profili i Përdoruesit</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="NfirstName">Emri</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="NfirstName"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="NlastName">Mbiemri</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="NlastName"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Nusername">Emri i përdoruesit</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Nusername"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Nemail">Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Nemail"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Nmunicipality">Komuna</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Nmunicipality"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Ndepartment">Departamenti</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Ndepartment"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Ndivision">Divizioni</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Ndivision"></label>
+                            </div>
+                        </div>
+                        <hr id="expiringHr" style="display: none;">
+                        <div id="expiringSection" class="row" style="display: none;">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Nexpiring">Data e mbarimit të kontratës</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Nexpiring"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Ngender">Gjinia</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Ngender"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Nrole">Roli</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Nrole"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="documentLabel" for="Nstatus">Statusi</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="Nstatus"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="Shto një përdorues" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="user">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ndrysho të dhënat për një përdorues</h5>
+                    <i class="fa fa-times closeModal"></i>
+                </div>
+                <div class="modal-body">
+                    <form id="updateUserForm" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="name">Emri</label>
+                            <input type="text" id="firstNameUpdate" placeholder="Emri" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Emri nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Mbiemri</label>
+                            <input type="text" id="lastNameUpdate" placeholder="Mbiemri" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Mbiemri nuk mund të jetë i zbrazët
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Emri i përdoruesit</label>
+                            <input type="text" id="usernameUpdate" placeholder="Emri i përdoruesit" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="emailUpdate" placeholder="Email" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Komuna</label>
+                            <select id="municipalityUpdate" class="form-control" required>
+                                <option selected value="">Zgjedhni komunën</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Ju lutemi zgjedhni komunën
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departments">Departamenti</label>
+                            <select id="departmentUpdate" name="department" class="form-control" required>
+                                <option value="" selected>Zgjedhni departamentin</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Ju lutemi gjedhni departamentin
+                            </div>
+                        </div>
+
+                        <div id="divisionSelectionUpdate" class="form-group">
+                            <label for="divisions">Divizioni</label>
+                            <select id="divisionUpdate" class="form-control" required>
+                            </select>
+                            <div class="invalid-feedback">
+                                Ju lutemi zgjedhni divizionin
+                            </div>
+                        </div>
+                        <div id="expiringSection" class="form-group">
+                            <label for="expiringUpdate">Data e mbarimit të kontratës</label>
+                            <input type="date" id="expiringUpdate" placeholder="Data e mbarimit të kontratës" name="expiringUpdate" class="form-control">
+                        </div>
+                        <div id="genderUpdate" class="form-group">
+                            <label for="gender">Gjinia</label>
+                            <br />
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="mU" value="m" name="genderUpdate" class="custom-control-input" required>
+                                <label class="custom-control-label" for="mU">Mashkull</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="fU" value="f" name="genderUpdate" class="custom-control-input" required>
+                                <label class="custom-control-label" for="fU">Femer</label>
+                                <br>
+                            </div>
+                        </div>
+
+                        <div id="rolesUpdate" class="form-group">
+                            <label for="roles">Roli</label>
+                            <br />
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="Usuperadmin" value="superadmin" name="roleUpdate" class="custom-control-input" required>
+                                <label class="custom-control-label" for="Usuperadmin">Super Administrator</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="Uadmin" value="admin" name="roleUpdate" class="custom-control-input" required>
+                                <label class="custom-control-label" for="Uadmin">Administrator</label>
+                                <br>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="Uuser" value="user" name="roleUpdate" class="custom-control-input" checked required>
+                                <label class="custom-control-label" for="Uuser">Përdorues</label>
+                                <br>
+                            </div>
+                        </div>
+                        <div id="statusUpdate" class="form-group">
+                            <label for="roles">Statusi</label>
+                            <br />
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="Uactive" value="active" name="statusUpdate" class="custom-control-input" required>
+                                <label class="custom-control-label" for="Uactive">Aktiv</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="Uinactive" value="inactive" name="statusUpdate" class="custom-control-input" required>
+                                <label class="custom-control-label" for="Uinactive">Jo aktiv</label>
+                                <br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+                    <button id="updateUser" type="button" class="btn btn-primary">Ruaj të dhënat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/user.js"></script>

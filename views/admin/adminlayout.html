@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Agjencia e Punësimit e Republikës së Kosovës</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/datatables/datatables.min.css">
+  <link rel="stylesheet" href="/css/lib/daterangepicker.css">
+  <!-- Custom fonts for this template-->
+  <link href="/vendor/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin.css" rel="stylesheet">
+  <script src="/vendor/js/jquery.min.js"></script>
+  <script src="/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="/datatables/datatables.min.js"></script>
+  <script src="/js/lib/moment-locale.js"></script>
+  <script src="/js/lib/daterangepicker.js"></script>
+</head>
+<body class="fixed-nav sticky-footer bg-light" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+    <img class="img-fluid" id="logo" src="/img/logo.png" alt="aprk">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="nav navbar-nav navbar-sidenav" id="exampleAccordion" role="tablist">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="PANELI KRYESOR">
+          <a class="nav-link" id="dashboard" data-toggle="tab" href="#dashboard-pane" aria-controls="dashboard-pane" aria-selected="true">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">PANELI KRYESOR</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="PROFILI IM">
+          <a class="nav-link" id="myprofile" data-toggle="tab" href="#myprofile-pane" aria-controls="myprofile-pane" aria-selected="false">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">PROFILI IM</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="PËRDORUESIT">
+          <a class="nav-link" id="users" data-toggle="tab" href="#users-pane" aria-controls="users-pane" aria-selected="false">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">PËRDORUESIT</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="DOKUMENTET">
+          <a class="nav-link" id="documents" data-toggle="tab" href="#documents-pane" aria-controls="documents-pane" aria-selected="false">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">DOKUMENTET</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="RAPORTET">
+          <a class="nav-link" id="reports" data-toggle="tab" href="#reports-pane" aria-controls="reports-pane" aria-selected="false">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">RAPORTET</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="DEPARTAMENTET">
+          <a class="nav-link" id="departments" data-toggle="tab" href="#departments-pane" aria-controls="departments-pane" aria-selected="false">
+            <i class="fa fa-fw fa-building"></i>
+            <span class="nav-link-text">DEPARTAMENTET</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="REGJISTRI I AKTIVITETEVE">
+          <a class="nav-link" id="activitylogs" data-toggle="tab" href="#activitylogs-pane" aria-controls="activitylogs-pane" aria-selected="false">
+            <i class="fa fa-fw fa-th-list"></i>
+            <span class="nav-link-text">REGJISTRI I AKTIVITETEVE</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <div style="float: right;" class="container">
+            <div style="display: flow-root;" class="row">
+              <span id="profileName"></span>
+            </div>
+            <div class="row">
+              <span id="profileRole"></span>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <!-- <span class="divider">|</span> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Çkyçu</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="dashboard-pane" role="tabpanel" aria-labelledby="dashboard">
+              {% include "./dashboard.html" %}
+            </div>
+            <div class="tab-pane fade" id="myprofile-pane" role="tabpanel" aria-labelledby="myprofile">
+              {% include "./profile.html" %}
+            </div>
+            <div class="tab-pane fade" id="users-pane" role="tabpanel" aria-labelledby="users">
+              {% include "./users.html" %}
+            </div>
+            <div class="tab-pane fade" id="documents-pane" role="tabpanel" aria-labelledby="documents">
+              {% include "./documents.html" %}
+            </div>
+            <div class="tab-pane fade" id="reports-pane" role="tabpanel" aria-labelledby="reports">
+              {% include "./reports.html" %}
+            </div>
+            <div class="tab-pane fade" id="departments-pane" role="tabpanel" aria-labelledby="departments">
+              {% include "./departments.html" %}
+            </div>
+            <div class="tab-pane fade" id="activitylogs-pane" role="tabpanel" aria-labelledby="activitylogs">
+              {% include "./activitylogs.html" %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>© 2018 ODK. All Rights Reserved.</small>
+        </div>
+      </div>
+    </footer>
+    <!--Ç ç Ë ë-->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Dëshironi të çkyçeni?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Zgjedheni "çkyçu" per të dalë nga aplikacioni.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Anulo</button>
+            <a href="/logout" class="btn btn-primary">Çkyçu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/js/lib/sweetalert2.all.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="/js/lib/jquery.form.js"></script>
+
+<!-- <script src="/js/lib/bootstrap.js"></script> -->
+<!-- Core plugin JavaScript-->
+<script src="/vendor/js/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin.js"></script>
+<script src="/js/permissions.js"></script>
+
+</html>

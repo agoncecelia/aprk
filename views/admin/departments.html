@@ -1,0 +1,20 @@
+<div>
+    <legend>Departamentet</legend>
+    <div class="container-fluid">
+        <div>
+            <form id="createDepartmentForm" novalidate>
+                <div style="padding-top: 10px;" class="input-group mb-3">
+                    <input id="departmentName" type="text" class="form-control" placeholder="Emri i departamentit" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="createDepartment" type="button">Krijo departamentin</button>
+                    </div>
+                    <div class="invalid-feedback">Emri i departamentit nuk mund të jetë i zbrazët</div>
+                </div>
+            </form>
+        </div>
+        <div id="departmentsContent">
+
+        </div>
+    </div>
+</div>
+<script src="/js/department.js"></script>

@@ -1,0 +1,401 @@
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pills-user-tab" data-toggle="pill" href="#userlogs" role="tab" aria-controls="pills-home"
+            aria-selected="true">PËRDORUESIT</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-document-tab" data-toggle="pill" href="#documentlogs" role="tab" aria-controls="pills-document"
+            aria-selected="false">DOKUMENTET</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-session-tab" data-toggle="pill" href="#loginLogs" role="tab" aria-controls="pills-session"
+            aria-selected="false">SESIONET</a>
+    </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="userlogs" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="table-responsive">
+            <table id="userActivityLogs" class="table table-striped display" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Super Administratori
+                        </th>
+                        <th>
+                            Veprimi
+                        </th>
+                        <th>
+                            Përdoruesin
+                        </th>
+                        <th>
+                            Data
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="documentlogs" role="tabpanel" aria-labelledby="pills-document-tab">
+        <div class="table-responsive">
+            <table id="documentActivityLogs" class="table table-striped display tablewidth" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Përdoruesi
+                        </th>
+                        <th>
+                            Veprimi
+                        </th>
+                        <th>
+                            Dokumenti
+                        </th>
+                        <th>
+                            Data
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="loginLogs" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="table-responsive">
+            <table id="loginActivityLogs" class="table table-striped display tablewidth" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Përdoruesi
+                        </th>
+                        <th>
+                            Veprimi
+                        </th>
+                        <th>
+                            Data
+                        </th>
+                    </tr>
+
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewDocumentLogsModal" tabindex="-1" role="dialog" aria-labelledby="Shiko Dokumentin" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="viewDocument">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 style="font-size: 1.5rem !important;" class="modal-title" id="LdocumentTitle"></h5>
+                            <br>
+                            <h5 style="margin-top: -30px; font-size: 1.5rem !important;" class="modal-title editedDocument" id="SdocumentTitle"></h5>
+                        </div>
+                        <div style="padding-top: 6px;" class="col-md-4">
+                            <span style="font-weight: 400 !important;" id="actualLegend" class="documentLabel">* Të dhënat aktuale</span>
+                            <br>
+                            <span id="previousLegend" class="editedDocument">* Të dhënat paraprake</span>
+                        </div>
+                    </div>
+                </div>
+                <i class="fa fa-times closeModal"></i>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="LdocumentNumber">Numri i lëndës</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="LdocumentNumber"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Lmunicipality">Komuna</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Lmunicipality"></label>
+                            <br>
+                            <label class="editedDocument" id="Smunicipality"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Lorigin">Prejardhja</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Lorigin"></label>
+                            <br>
+                            <label class="editedDocument" id="Sorigin"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Laddressed">Adresuar</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Laddressed"></label>
+                            <br>
+                            <label class="editedDocument" id="Saddressed"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="LdocumentDate">Data e dokumentit</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="LdocumentDate"></label>
+                            <br>
+                            <label class="editedDocument" id="SdocumentDate"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="LdateOfDocumentArrival">Data e ardhjes së dokumentit</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="LdateOfDocumentArrival"></label>
+                            <br>
+                            <label class="editedDocument" id="SdateOfDocumentArrival"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Lthrough">Përmes</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Lthrough"></label>
+                            <br>
+                            <label class="editedDocument" id="Sthrough"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Lreceiver">Marrësi</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Lreceiver"></label>
+                            <br>
+                            <label class="editedDocument" id="Sreceiver"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="LdateOfDocumentIssued">Data e daljes të dokumentit</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="LdateOfDocumentIssued"></label>
+                            <br>
+                            <label class="editedDocument" id="SdateOfDocumentIssued"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="LphysicalLocation">Lokacioni fizik</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="LphysicalLocation"></label>
+                            <br>
+                            <label class="editedDocument" id="SphysicalLocation"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Ldepartment">Departamenti</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Ldepartment"></label>
+                            <br>
+                            <label class="editedDocument" id="Sdepartment"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Ldivision">Divizioni</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Ldivision"></label>
+                            <br>
+                            <label class="editedDocument" id="Sdivision"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Lcomment">Vërejtje</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="Lcomment"></p>
+                            <br>
+                            <p class="editedDocument" id="Scomment"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="file">Dokumenti i skenuar</label>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="" id="Ldownload">
+                                <i class="fa fa-download"></i>
+                                <span id="LfileNameSpan"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewUserLogsModal" tabindex="-1" role="dialog" aria-labelledby="Shiko Përdoruesin" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="viewUser">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 class="modal-title">Profili i Përdoruesit</h5>
+                        </div>
+                        <div class="col-md-4">
+                            <span style="font-weight: 400 !important;" id="actualLegend" class="documentLabel">* Të dhënat aktuale</span>
+                            <br>
+                            <span id="previousLegend" class="editedDocument">* Të dhënat paraprake</span>
+                        </div>
+                    </div>
+                </div>
+                <i class="fa fa-times closeModal"></i>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="UfirstName">Emri</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="UfirstName"></label>
+                            <br>
+                            <label class="editedUser" id="RfirstName"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="UlastName">Mbiemri</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="UlastName"></label>
+                            <br>
+                            <label class="editedUser" id="RlastName"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Rusername">Emri i përdoruesit</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Rusername"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Uemail">Email</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Uemail"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Umunicipality">Komuna</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Umunicipality"></label>
+                            <br>
+                            <label class="editedUser" id="Rmunicipality"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Udepartment">Departamenti</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Udepartment"></label>
+                            <br>
+                            <label class="editedUser" id="Rdepartment"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Udivision">Divizioni</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Udivision"></label>
+                            <br>
+                            <label class="editedUser" id="Rdivision"></label>
+                        </div>
+                    </div>
+                    <hr id="RexpiringHr" style="display: none;">
+                    <div id="RexpiringSection" class="row" style="display: none;">
+                        <div class="col-sm-6">
+                            <label class="documentLabel" for="Rexpiring">Data e mbarimit të kontratës</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label id="Rexpiring"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Ugender">Gjinia</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Ugender"></label>
+                            <br>
+                            <label class="editedUser" id="Rgender"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Urole">Roli</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Urole"></label>
+                            <br>
+                            <label class="editedUser" id="Rrole"></label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="documentLabel" for="Ustatus">Statusi</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label id="Ustatus"></label>
+                            <br>
+                            <label class="editedUser" id="Rstatus"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/activitylogs.js"></script>

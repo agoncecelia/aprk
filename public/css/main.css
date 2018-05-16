@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+  
+h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+body {
+    /* background-color: #ffffff;; */
+    margin-bottom: 44px;
+    line-height: 1.57142857;
+    font-family: "Muli", sans-serif;
+    background: url(../img/sky.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #111!important;
+}
+.btn-info {
+    background-color: #337ab7;
+    border-color: #337ab7;
+ }
+  
+.login-error{
+    font-size: 14px;
+    color: red;
+    margin-bottom: 5px;
+}
+
+#forgot-password {
+    color: blue;
+}
+
+.swal2-title {
+    font-size: 19px!important;
+    font-weight: 580!important;
+}
+
+.home-paragraph {
+    text-align: justify
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.3);
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+  }
+
+.vertical-middle-align {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+
+#logo {
+    padding: 10px 10px 10px 0px;
+    max-width: 100%;
+}
+
+.login-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 555px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+footer {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 44px;
+    padding: 10px 30px;
+    bottom: 0;
+    background: transparent;
+}
+
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+    background-size: 5%!important;
+	background: url('/img/preloader.gif') center no-repeat #fff;
+}
