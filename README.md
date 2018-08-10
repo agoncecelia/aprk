@@ -1,4 +1,4 @@
-# APRK Digital Document Archive Application
+# Digital Document Archive Application
 
 A web based application used for the document archive in the Ministry of Social Securities in Kosovo.
 
@@ -18,9 +18,8 @@ A web based application used for the document archive in the Ministry of Social 
  * Backend Framework: **Express.js**
  * Database: **Mongodb**
  * ORM: **Mongoose**
- * Frontend framework: **jQuery**
+ * Frontend: **jQuery**
  * Responsive Interface: **Bootstrap**
- * Authentication: **JSON Web Token**
  * Web Service API: **REST**
 
 ## Getting Started
