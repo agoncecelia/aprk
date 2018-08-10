@@ -1,5 +1,18 @@
 # APRK Digital Document Archive Application
 
+A web based application used for the document archive in the Ministry of Social Securities in Kosovo.
+
+- User roles.
+- Manage users.
+- Manage documents.
+- Easily find and filter documents.
+- Check if document is already added based on requested criteria.
+- Reports page, generate reports based on filter criteria.
+- Add and attach subdocuments to document.
+- Email document directly from web client.
+- Forgot password recovery with token through email.
+- Activity logs for superadmin.
+
 ## Technologies used:
  * Server: **Node.js**
  * Backend Framework: **Express.js**
